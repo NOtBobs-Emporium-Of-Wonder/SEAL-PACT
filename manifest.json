@@ -1,0 +1,55 @@
+{
+  "$schema": "https://brian.kda/schemas/v2/plugin.json",
+  "name": "seal-klub-prover-plugin",
+  "version": "2.0.0",
+  "description": "Universal Formal Verification & SMT Invariant Solver Plugin for DeepSeek Harness, Claude CLI, and BRIAN v2.0",
+  "author": "not_bob & seal_klub",
+  "entrypoint": "./bin/seal-klub-prover",
+  "protocol": "jsonrpc-2.0-stdio",
+  "capabilities": [
+    "tools:register",
+    "verify",
+    "heal",
+    "diff",
+    "audit",
+    "export-smt",
+    "rules"
+  ],
+  "tools": [
+    {
+      "name": "pact_verify",
+      "description": "Formally verify a Pact contract against 16 formal invariants (SMT conservation, capability guards, PQ schemes)",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "source": { "type": "string", "description": "Pact contract source code" },
+          "filePath": { "type": "string", "description": "File path" }
+        },
+        "required": ["source"]
+      }
+    },
+    {
+      "name": "pact_heal",
+      "description": "Autonomous non-destructive code healing loop injecting formal invariants and security guards",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "source": { "type": "string", "description": "Pact contract source code" },
+          "maxIterations": { "type": "integer", "default": 5 }
+        },
+        "required": ["source"]
+      }
+    },
+    {
+      "name": "pact_diff",
+      "description": "Generate dry-run visual patch diffs without modifying files",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "source": { "type": "string", "description": "Pact contract source code" }
+        },
+        "required": ["source"]
+      }
+    }
+  ]
+}

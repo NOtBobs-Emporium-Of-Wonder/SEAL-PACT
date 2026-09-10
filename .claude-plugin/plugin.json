@@ -1,0 +1,12 @@
+{
+  "name": "pact-seal-klub-prover",
+  "version": "2.0.0",
+  "description": "Pact 5 Formal Verification and A2A Self-Healing Engine for Claude CLI and Anthropic Agents",
+  "author": "not_bob & seal_klub",
+  "commands": {
+    "verify": "seal-klub-prover verify $FILE",
+    "heal": "seal-klub-prover heal $FILE --review",
+    "audit": "seal-klub-prover audit $DIR",
+    "diff": "seal-klub-prover diff $FILE"
+  }
+}
